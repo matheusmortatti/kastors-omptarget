@@ -1,0 +1,1 @@
+ulimit -t 300; ./sparselu -t 2 -n 32 -m 32

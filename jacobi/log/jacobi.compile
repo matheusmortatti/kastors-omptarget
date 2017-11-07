@@ -1,0 +1,17 @@
+
+---------------------------------------------------------
+seg out 30 16:50:54 -02 2017
+
+---------------------------------------------------------
+qua nov  1 15:09:11 -02 2017
+benchmarks/kastors/jacobi/src/jacobi-task-dep.c: In function ‘sweep_task_dep’:
+benchmarks/kastors/jacobi/src/jacobi-task-dep.c:21:38: error: expected identifier before ‘(’ token
+ #pragma omp target device(0) map(to: (*unew)[i*ny: i*ny + ny]) map(tofrom: map(to: (*u)[i*ny: i*ny + ny]))
+                                      ^
+benchmarks/kastors/jacobi/src/jacobi-task-dep.c:21:76: error: ‘map’ undeclared (first use in this function)
+ #pragma omp target device(0) map(to: (*unew)[i*ny: i*ny + ny]) map(tofrom: map(to: (*u)[i*ny: i*ny + ny]))
+                                                                            ^
+benchmarks/kastors/jacobi/src/jacobi-task-dep.c:21:76: note: each undeclared identifier is reported only once for each function it appears in
+benchmarks/kastors/jacobi/src/jacobi-task-dep.c:21:79: error: expected ‘)’ before ‘(’ token
+ #pragma omp target device(0) map(to: (*unew)[i*ny: i*ny + ny]) map(tofrom: map(to: (*u)[i*ny: i*ny + ny]))
+                                                                               ^

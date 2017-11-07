@@ -1,0 +1,9 @@
+ulimit -t 300; ./strassen -t 2
+ulimit -t 300; ./strassen -t 2
+ulimit -t 300; ./strassen -t 2
+ulimit -t 300; ./strassen -t 2
+ulimit -t 300; ./strassen -t 2
+ulimit -t 300; ./strassen -t 2
+ulimit -t 300; ./strassen -t 2
+ulimit -t 300; ./strassen -t 2
+ulimit -t 300; ./strassen -t 2

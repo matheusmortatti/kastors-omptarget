@@ -1,0 +1,1 @@
+ulimit -t 300; ./jacobi -t 2

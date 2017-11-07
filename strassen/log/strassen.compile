@@ -1,0 +1,42 @@
+
+---------------------------------------------------------
+seg out 30 16:35:25 -02 2017
+benchmarks/kastors/strassen/src/strassen.c: In function ‘init_matrix’:
+benchmarks/kastors/strassen/src/strassen.c:350:55: warning: implicit declaration of function ‘rand_r’ [-Wimplicit-function-declaration]
+                       ELEM(A, an, ii, jj) = ((double) rand_r(&seed) / RAND_MAX);
+                                                       ^
+
+---------------------------------------------------------
+seg out 30 16:48:23 -02 2017
+benchmarks/kastors/strassen/src/strassen.c: In function ‘init_matrix’:
+benchmarks/kastors/strassen/src/strassen.c:350:55: warning: implicit declaration of function ‘rand_r’ [-Wimplicit-function-declaration]
+                       ELEM(A, an, ii, jj) = ((double) rand_r(&seed) / RAND_MAX);
+                                                       ^
+
+---------------------------------------------------------
+seg out 30 16:50:54 -02 2017
+benchmarks/kastors/strassen/src/strassen.c: In function ‘init_matrix’:
+benchmarks/kastors/strassen/src/strassen.c:350:55: warning: implicit declaration of function ‘rand_r’ [-Wimplicit-function-declaration]
+                       ELEM(A, an, ii, jj) = ((double) rand_r(&seed) / RAND_MAX);
+                                                       ^
+
+---------------------------------------------------------
+seg out 30 17:00:13 -02 2017
+benchmarks/kastors/strassen/src/strassen.c: In function ‘init_matrix’:
+benchmarks/kastors/strassen/src/strassen.c:350:55: warning: implicit declaration of function ‘rand_r’ [-Wimplicit-function-declaration]
+                       ELEM(A, an, ii, jj) = ((double) rand_r(&seed) / RAND_MAX);
+                                                       ^
+
+---------------------------------------------------------
+seg out 30 17:03:17 -02 2017
+benchmarks/kastors/strassen/src/strassen.c: In function ‘init_matrix’:
+benchmarks/kastors/strassen/src/strassen.c:350:55: warning: implicit declaration of function ‘rand_r’ [-Wimplicit-function-declaration]
+                       ELEM(A, an, ii, jj) = ((double) rand_r(&seed) / RAND_MAX);
+                                                       ^
+
+---------------------------------------------------------
+ter out 31 16:43:16 -02 2017
+benchmarks/kastors/strassen/src/strassen.c: In function ‘init_matrix’:
+benchmarks/kastors/strassen/src/strassen.c:350:55: warning: implicit declaration of function ‘rand_r’ [-Wimplicit-function-declaration]
+                       ELEM(A, an, ii, jj) = ((double) rand_r(&seed) / RAND_MAX);
+                                                       ^
