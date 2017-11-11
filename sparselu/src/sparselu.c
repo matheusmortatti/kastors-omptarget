@@ -105,10 +105,17 @@ float * allocate_clean_block(int submatrix_size)
  **********************************************************************/
 void lu0(float *diag, int submatrix_size)
 {
-#pragma omp target device(0) map(tofrom: diag[0:submatrix_size*submatrix_size])
-{
     int i, j, k;
-
+#ifndef NO_TARGET
+#pragma omp target teams distribute parallel for device(0) \
+                                    private(i, j, k) \
+                                    map(tofrom: diag[0:submatrix_size*submatrix_size]) \
+                                    collapse(1)
+#else
+#pragma omp parallel for \
+            private(i, j, k) \
+            collapse(1)
+#endif                         
     for (k=0; k<submatrix_size; k++)
         for (i=k+1; i<submatrix_size; i++)
         {
@@ -116,7 +123,6 @@ void lu0(float *diag, int submatrix_size)
             for (j=k+1; j<submatrix_size; j++)
                 diag[i*submatrix_size+j] = diag[i*submatrix_size+j] - diag[i*submatrix_size+k] * diag[k*submatrix_size+j];
         }
-   }
 }
 
 /***********************************************************************
@@ -124,9 +130,18 @@ void lu0(float *diag, int submatrix_size)
  **********************************************************************/
 void bdiv(float *diag, float *row, int submatrix_size)
 {
-#pragma omp target device(0) map(tofrom: diag[0:submatrix_size*submatrix_size], row[0:submatrix_size*submatrix_size])
-{
     int i, j, k;
+
+#ifndef NO_TARGET
+#pragma omp target teams distribute parallel for device(0) \
+                                    private(i, j, k) \
+                                    map(tofrom: diag[0:submatrix_size*submatrix_size], row[0:submatrix_size*submatrix_size]) \
+                                    collapse(2)
+#else
+#pragma omp parallel for \
+            private(i, j, k) \
+            collapse(2)
+#endif
     for (i=0; i<submatrix_size; i++)
         for (k=0; k<submatrix_size; k++)
         {
@@ -135,34 +150,50 @@ void bdiv(float *diag, float *row, int submatrix_size)
                 row[i*submatrix_size+j] = row[i*submatrix_size+j] - row[i*submatrix_size+k]*diag[k*submatrix_size+j];
         }
 }
-}
 /***********************************************************************
  * bmod:
  **********************************************************************/
 void bmod(float *row, float *col, float *inner, int submatrix_size)
 {
-#pragma omp target device(0) map(tofrom: row[0:submatrix_size*submatrix_size], inner[0:submatrix_size*submatrix_size], col[0:submatrix_size*submatrix_size])
-{
     int i, j, k;
+
+#ifndef NO_TARGET
+#pragma omp target teams distribute parallel for device(0) \
+                                    private(i, j, k) \
+                                    map(tofrom: row[0:submatrix_size*submatrix_size], inner[0:submatrix_size*submatrix_size], col[0:submatrix_size*submatrix_size]) \
+                                    collapse(2)
+#else
+#pragma omp parallel for \
+            private(i, j, k) \
+            collapse(2)
+#endif
     for (i=0; i<submatrix_size; i++)
         for (j=0; j<submatrix_size; j++)
             for (k=0; k<submatrix_size; k++)
                 inner[i*submatrix_size+j] = inner[i*submatrix_size+j] - row[i*submatrix_size+k]*col[k*submatrix_size+j];
-}
 }
 /***********************************************************************
  * fwd:
  **********************************************************************/
 void fwd(float *diag, float *col, int submatrix_size)
 {
-#pragma omp target device(0) map(tofrom: diag[0:submatrix_size*submatrix_size], col[0:submatrix_size*submatrix_size])
-{
     int i, j, k;
+
+
+#ifndef NO_TARGET
+#pragma omp target teams distribute parallel for device(0) \
+                                    private(i, j, k) \
+                                    map(tofrom: diag[0:submatrix_size*submatrix_size], col[0:submatrix_size*submatrix_size]) \
+                                    collapse(2)
+#else
+#pragma omp parallel for \
+            private(i, j, k) \
+            collapse(2)
+#endif
     for (j=0; j<submatrix_size; j++)
         for (k=0; k<submatrix_size; k++)
             for (i=k+1; i<submatrix_size; i++)
                 col[i*submatrix_size+j] = col[i*submatrix_size+j] - diag[i*submatrix_size+k]*col[k*submatrix_size+j];
-}
 }
 
 
